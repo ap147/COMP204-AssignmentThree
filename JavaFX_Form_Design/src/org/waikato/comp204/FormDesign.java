@@ -24,6 +24,7 @@ public class FormDesign extends Application
     {
         //Setting Windows Title Name
         primaryStage.setTitle("JavaFX Welcome");
+
         //Flixable grid (Username & Password)
         GridPane grid = new GridPane();
         //Setting in what position we want the grid (Username : + Password: ) to be in
@@ -33,7 +34,10 @@ public class FormDesign extends Application
         grid.setVgap(10);
         //How big the space within grid
         grid.setPadding(new Insets(25,25,25,25));
+        //Enables visable gridlines
+        grid.setGridLinesVisible(true);
 
+        //THIS WONT WORK FOR SOME REASON
         Text scenetitle = new Text("Welcome");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 
