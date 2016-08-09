@@ -35,11 +35,12 @@ public class FormDesign extends Application
         //How big the space within grid
         grid.setPadding(new Insets(25,25,25,25));
         //Enables visable gridlines
-        grid.setGridLinesVisible(true);
+        //grid.setGridLinesVisible(true);
 
         //THIS WONT WORK FOR SOME REASON
         Text scenetitle = new Text("Welcome");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid.add(scenetitle, 0,0,2,1);
 
         //Username & Password
         Label userName = new Label("User Name:");
