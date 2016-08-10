@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 
 public class Project extends Application
 {
+    private static GridPane grid = new GridPane();
     public static void main(String []args)
     {
         launch(args);
@@ -31,19 +33,47 @@ public class Project extends Application
     public void start(Stage primaryStage)
     {
         primaryStage.setTitle("JavaFX Project");
+        setupGrid();
+        setupInputTextFields();
 
-        GridPane grid = new GridPane();
+        Line line = new Line();
+
+        line.setStartX(100f);
+        line.setStartY(100f);
+        line.setEndX(100f);
+        line.setEndY(300f);
+
+        Scene scene = new Scene(grid, 700, 250);
+        primaryStage.setScene(scene);
+
+
+        primaryStage.show();
+
+    }
+
+    public static void setupGrid()
+    {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(0,20,0,20));
         //grid.setGridLinesVisible(true);
 
+    }
+
+    public static void setupInputTextFields()
+    {
 
         // ------------------    INPUT    ------------------
         // ----------- ITEMS
         TextField inputItemA = new TextField();
         grid.add(inputItemA, 1, 4);
         inputItemA.setPrefWidth(200);
+        inputItemA.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                System.out.println(inputItemA.getText());
+            }
+        });
 
         TextField inputItemB = new TextField();
         grid.add(inputItemB, 1, 5);
@@ -78,18 +108,11 @@ public class Project extends Application
         TextField inputPriceC = new TextField();
         grid.add(inputPriceC, 3, 6);
         inputPriceC.setPrefWidth(75);
+    }
 
-        Line line = new Line();
+    public static void Calculate()
+    {
 
-        line.setStartX(100f);
-        line.setStartY(100f);
-        line.setEndX(100f);
-        line.setEndY(300f);
-
-        Scene scene = new Scene(grid, 700, 250);
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
     }
 
 
