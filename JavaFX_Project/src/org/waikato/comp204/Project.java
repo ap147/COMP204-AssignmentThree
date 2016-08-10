@@ -1,7 +1,7 @@
 package org.waikato.comp204;
 //https://www.youtube.com/watch?v=QGGE0WsUslc
 //http://stackoverflow.com/questions/32866937/how-to-check-if-textfield-is-empty
-//rhttp://docs.oracle.com/javafx/2/layout/builtin_layouts.htm
+//http://docs.oracle.com/javafx/2/layout/builtin_layouts.htm
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,6 +43,7 @@ public class Project extends Application {
         setupItems();
         setupGrid();
         setupInputTextFields();
+        setupCalculationields();
 
         Scene scene = new Scene(grid, 700, 250);
         primaryStage.setScene(scene);
@@ -194,6 +195,23 @@ public class Project extends Application {
     {
         items[index].setName(_itemName);
     }
+
+
+
+
+
+
+    private static void setupCalculationields()
+    {
+        //------------------ AMOUNT
+        Text itemAmountA = new Text(items[0].getAmount()+"x");
+        itemAmountA.setFont(Font.font("Arial", FontWeight.BLACK, 18));
+        grid.add(itemAmountA,10,6);
+        //------------------ NAME
+        Text itemA = new Text(items[0].getName());
+        itemA.setFont(Font.font("Arial", FontWeight.BLACK, 18));
+        grid.add(itemA,12,6);
+    }
     private static void Calculate()
     {
         Total = 0;
@@ -218,7 +236,7 @@ class item
 
     public item()
     {
-        Amount = 0; Price = 0;
+        Amount = 0; Price = 0; Name = "John";
     }
 
     public void setName(String _n)
