@@ -32,6 +32,7 @@ public class Project extends Application {
     private static item itemB;
     private static item itemC;
 
+    private static double Total;
     public static void main(String[] args) {
         launch(args);
     }
@@ -125,10 +126,11 @@ public class Project extends Application {
         System.out.println("Input Detected");
         if(isitPrice)
         {
-            if (CheckIfNum(x.getText(),false))
+            System.out.println("PRICE Input");
+            if (CheckIfNum(x.getText(),true))
             {
                 System.out.println("Correct input");
-                items[index].setPrice(Integer.parseInt(x.getText()));
+                items[index].setPrice(Double.parseDouble(x.getText()));
             }
             else
             {
@@ -137,10 +139,17 @@ public class Project extends Application {
                 {
                     x.setText(items[index].getPrice() + "");
                 }
+                else
+                {
+                    items[index].setPrice(0);
+                }
+
             }
+           System.out.println(items[index].getPrice());
         }
         else
         {
+            System.out.println("AMOUNT Input");
             if (CheckIfNum(x.getText(),false))
             {
                 System.out.println("Correct input");
@@ -153,8 +162,14 @@ public class Project extends Application {
                 {
                     x.setText(items[index].getAmount() + "");
                 }
+                else
+                {
+                    items[index].setAmount(0);
+                }
             }
+            System.out.println(items[index].getAmount());
         }
+        Calculate();
     }
     private static boolean CheckIfNum(String num, boolean isitPrice)
     {
@@ -162,6 +177,7 @@ public class Project extends Application {
             if(isitPrice)
             {
                 double x = Double.parseDouble(num);
+                return true;
             }
             else
             {
@@ -177,7 +193,15 @@ public class Project extends Application {
 
     private static void Calculate()
     {
+        Total = 0;
+        System.out.println();
+        System.out.println("Calculating..");
 
+        for(int x = 0; x < items.length; x++)
+        {
+            Total = Total + (items[x].getPrice() * items[x].getAmount());
+        }
+        System.out.println("Total :" + Total );
     }
 
 
@@ -191,6 +215,7 @@ class item
 
     public item()
     {
+        Amount = 0; Price = 0;
     }
 
     public void setName(String _n)
