@@ -26,18 +26,10 @@ import javafx.stage.Stage;
 public class Project extends Application {
     private static GridPane grid = new GridPane();
 
-    private static String itemA;
-    private static String itemB;
-    private static String itemC;
-
-    private static int amountA;
-    private static int amountB;
-    private static int amountC;
-
-    private static double priceA;
-    private static double priceB;
-    private static double priceC;
-
+    private static item[] items = new item[3];
+    private static item itemA;
+    private static item itemB;
+    private static item itemC;
 
     public static void main(String[] args) {
         launch(args);
@@ -46,15 +38,9 @@ public class Project extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("JavaFX Project");
+        setupItems();
         setupGrid();
         setupInputTextFields();
-
-        Line line = new Line();
-
-        line.setStartX(100f);
-        line.setStartY(100f);
-        line.setEndX(100f);
-        line.setEndY(300f);
 
         Scene scene = new Scene(grid, 700, 250);
         primaryStage.setScene(scene);
@@ -64,7 +50,16 @@ public class Project extends Application {
 
     }
 
-    public static void setupGrid() {
+    private static void setupItems()
+    {
+        itemA = new item();
+        itemB = new item();
+        itemC = new item();
+
+        items[0] = itemA;
+        items[1] = itemB;
+    }
+    private static void setupGrid() {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(0, 20, 0, 20));
@@ -155,6 +150,43 @@ public class Project extends Application {
     }
 
 
+}
+
+class item
+{
+    private String Name;
+    private int Amount;
+    private double Price;
+
+    public item()
+    {
+    }
+
+    public void setName(String _n)
+    {
+        Name = _n;
+    }
+    public void setAmount(int _a)
+    {
+        Amount = _a;
+    }
+    public void setPrice(double _p)
+    {
+        Price = _p;
+    }
+
+    public String getName()
+    {
+        return Name;
+    }
+    public Integer getAmount()
+    {
+        return Amount;
+    }
+    public Double getPrice()
+    {
+        return Price;
+    }
 }
 
 
