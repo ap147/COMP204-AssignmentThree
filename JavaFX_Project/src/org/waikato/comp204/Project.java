@@ -1,6 +1,7 @@
 package org.waikato.comp204;
 //https://www.youtube.com/watch?v=QGGE0WsUslc
 //http://stackoverflow.com/questions/32866937/how-to-check-if-textfield-is-empty
+//rhttp://docs.oracle.com/javafx/2/layout/builtin_layouts.htm
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -58,6 +59,7 @@ public class Project extends Application {
 
         items[0] = itemA;
         items[1] = itemB;
+        items[2] = itemC;
     }
     private static void setupGrid() {
         grid.setHgap(10);
@@ -74,44 +76,33 @@ public class Project extends Application {
         TextField inputItemA = new TextField();
         grid.add(inputItemA, 1, 4);
         inputItemA.setPrefWidth(200);
-        inputItemA.setOnKeyReleased(event -> itemA = inputItemA.getText());
+      //  inputItemA.setOnKeyReleased(event -> itemA = inputItemA.getText());
 
         TextField inputItemB = new TextField();
         grid.add(inputItemB, 1, 5);
         inputItemB.setPrefWidth(200);
-        inputItemB.setOnKeyReleased(event -> itemB = inputItemB.getText());
+      //  inputItemB.setOnKeyReleased(event -> itemB = inputItemB.getText());
 
         TextField inputItemC = new TextField();
         grid.add(inputItemC, 1, 6);
         inputItemC.setPrefWidth(200);
-        inputItemC.setOnKeyReleased(event -> itemC = inputItemC.getText());
+        //inputItemC.setOnKeyReleased(event -> itemC = inputItemC.getText());
 
         // ---------- AMOUNT
         TextField inputAmountA = new TextField();
         grid.add(inputAmountA, 2, 4);
         inputAmountA.setPrefWidth(50);
-        inputAmountA.setOnKeyReleased(event -> amountA = Integer.parseInt(inputAmountA.getText()));
+      //  inputAmountA.setOnKeyReleased(event -> amountA = Integer.parseInt(inputAmountA.getText()));
 
         TextField inputAmountB = new TextField();
         grid.add(inputAmountB, 2, 5);
         inputAmountB.setPrefWidth(50);
-        inputAmountB.setOnKeyReleased(event -> amountB = Integer.parseInt(inputAmountB.getText()));
+        //inputAmountB.setOnKeyReleased(event -> amountB = Integer.parseInt(inputAmountB.getText()));
 
         TextField inputAmountC = new TextField();
         grid.add(inputAmountC, 2, 6);
         inputAmountC.setPrefWidth(50);
-        inputAmountC.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (CheckIfNum(inputAmountC.getText())) {
-                    amountC = Integer.parseInt(inputAmountC.getText());
-                } else {
-                    if (!inputAmountC.getText().trim().isEmpty()) {
-                        inputAmountC.setText(amountC + "");
-                    }
-                }
-            }
-        });
+        inputAmountC.setOnKeyReleased( event -> CheckTextBox(inputAmountC,2, false));
 
         // ---------- PRICE
         TextField inputPriceA = new TextField();
@@ -126,17 +117,57 @@ public class Project extends Application {
         TextField inputPriceC = new TextField();
         grid.add(inputPriceC, 3, 6);
         inputPriceC.setPrefWidth(75);
+        inputPriceC.setOnKeyReleased(event -> CheckTextBox(inputPriceC, 2, true));
     }
 
-    private static void CheckTextBox(TextField x)
+    private static void CheckTextBox(TextField x, int index, boolean isitPrice)
     {
-
+        System.out.println("Input Detected");
+        if(isitPrice)
+        {
+            if (CheckIfNum(x.getText(),false))
+            {
+                System.out.println("Correct input");
+                items[index].setPrice(Integer.parseInt(x.getText()));
+            }
+            else
+            {
+                System.out.println("Invalid input");
+                if (!x.getText().trim().isEmpty())
+                {
+                    x.setText(items[index].getPrice() + "");
+                }
+            }
+        }
+        else
+        {
+            if (CheckIfNum(x.getText(),false))
+            {
+                System.out.println("Correct input");
+                items[index].setAmount(Integer.parseInt(x.getText()));
+            }
+            else
+            {
+                System.out.println("Invalid input");
+                if (!x.getText().trim().isEmpty())
+                {
+                    x.setText(items[index].getAmount() + "");
+                }
+            }
+        }
     }
-    private static boolean CheckIfNum(String num)
+    private static boolean CheckIfNum(String num, boolean isitPrice)
     {
         try{
-            int x = Integer.parseInt(num);
-            return true;
+            if(isitPrice)
+            {
+                double x = Double.parseDouble(num);
+            }
+            else
+            {
+                int x = Integer.parseInt(num);
+                return true;
+            }
         }
         catch(Exception e)
         {
