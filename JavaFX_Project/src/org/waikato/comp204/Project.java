@@ -22,22 +22,38 @@ import javafx.stage.Stage;
 
 public class Project extends Application
 {
+    public static void main(String []args)
+    {
+        launch(args);
+    }
     @Override
     public void start(Stage primaryStage)
     {
-        //Setting Window Title
         primaryStage.setTitle("JavaFX Project");
 
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, 750, 400);
-
-        
-
-
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(0,20,0,20));
 
 
+        //Setting Titles
+        Text itemTitle = new Text("Item");
+        itemTitle.setFont(Font.font("Arial",FontWeight.BOLD, 16));
+        grid.add(itemTitle, 1, 1);
+
+        Text categoryTitle = new Text("Amount");
+        categoryTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        grid.add(categoryTitle, 10, 1);
+
+        Scene scene = new Scene(grid, 600, 300);
         primaryStage.setScene(scene);
+
         primaryStage.show();
+
     }
+
+
 }
+
 
