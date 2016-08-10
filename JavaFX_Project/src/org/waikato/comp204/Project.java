@@ -22,6 +22,22 @@ import javafx.stage.Stage;
 
 public class Project extends Application
 {
+    @Override
+    public void start(Stage primaryStage)
+    {
+        //Setting Window Title
+        primaryStage.setTitle("JavaFX Project");
 
+        StackPane root = new StackPane();
+        Scene scene = new Scene(root, 750, 400);
+
+        
+
+
+
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 }
 
