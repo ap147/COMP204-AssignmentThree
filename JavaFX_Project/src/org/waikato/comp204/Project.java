@@ -87,7 +87,7 @@ public class Project extends Application {
         TextField inputItemC = new TextField();
         grid.add(inputItemC, 1, 6);
         inputItemC.setPrefWidth(200);
-        //inputItemC.setOnKeyReleased(event -> itemC = inputItemC.getText());
+        inputItemC.setOnKeyReleased(event -> StoreName(inputItemC.getText(), 2));
 
         // ---------- AMOUNT
         TextField inputAmountA = new TextField();
@@ -190,7 +190,10 @@ public class Project extends Application {
         }
         return false;
     }
-
+    private static void StoreName(String _itemName, int index)
+    {
+        items[index].setName(_itemName);
+    }
     private static void Calculate()
     {
         Total = 0;
