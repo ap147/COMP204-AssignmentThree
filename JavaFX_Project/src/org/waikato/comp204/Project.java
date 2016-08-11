@@ -30,7 +30,7 @@ public class Project extends Application {
     private static item[] items = new item[3];
 
     private static TextField[] ItemNameAmouunt = new TextField[3];
-    private static TextField[] ItemTotalText = new TextField[3];
+    private static TextField[] ItemTotal = new TextField[4];
 
     private static double Total;
     public static void main(String[] args) {
@@ -165,6 +165,7 @@ public class Project extends Application {
 
             }
            System.out.println(items[index].getPrice());
+            Calculate();
             updateThis(index,"Price");
         }
         else
@@ -188,10 +189,10 @@ public class Project extends Application {
                 }
             }
             System.out.println(items[index].getAmount());
+            Calculate();
             updateThis(index,"Amount");
         }
 
-        Calculate();
     }
     private static boolean CheckIfNum(String num, boolean isitPrice)
     {
@@ -228,7 +229,6 @@ public class Project extends Application {
 
         //------------------ AMOUNT
         TextField itemAmountC = new TextField(items[2].getName()+"x"+items[2].getAmount());
-        itemAmountC.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
         itemAmountC.setMinWidth(275);
         itemAmountC.setPrefWidth(275);
         itemAmountC.setMaxWidth(275);
@@ -241,12 +241,22 @@ public class Project extends Application {
         //------------------- TOTAL
         TextField ItemTotalTextC = new TextField();
         ItemTotalTextC.setText("$"+items[2].getTotal());
-        ItemTotalTextC.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
         ItemTotalTextC.setPrefWidth(100);
         ItemTotalTextC.setDisable(true);
 
         grid.add(ItemTotalTextC, 11, 6);
-        ItemTotalText[2] = ItemTotalTextC;
+        ItemTotal[2] = ItemTotalTextC;
+
+        //------------------- TOTAL TOTAL
+
+        TextField TotalToal = new TextField();
+        TotalToal.setText("Total : $ "+items[0].getTotal());
+
+        TotalToal.setPrefWidth(150);
+        TotalToal.setDisable(true);
+
+        grid.add(TotalToal, 10, 7);
+        ItemTotal[3] = TotalToal;
     }
 
     private static void updateThis(int index, String Type)
@@ -257,7 +267,8 @@ public class Project extends Application {
         }
         else
         {
-            ItemTotalText[index].setText("$"+items[index].getTotal());
+            ItemTotal[index].setText("$"+items[index].getTotal());
+            ItemTotal[3].setText("Total : $" + Total);
         }
 
     }
