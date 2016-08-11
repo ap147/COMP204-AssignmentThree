@@ -30,6 +30,7 @@ public class Project extends Application {
     private static item[] items = new item[3];
     private static Text[] AmountText = new Text[3];
     private static Text[] ItemNameText = new Text[3];
+    private static TextField[] ItemTotalText = new TextField[3];
 
     private static double Total;
     public static void main(String[] args) {
@@ -44,7 +45,7 @@ public class Project extends Application {
         setupInputTextFields();
         setupCalculationfields();
 
-        Scene scene = new Scene(grid, 700, 250);
+        Scene scene = new Scene(grid, 850, 250);
         primaryStage.setScene(scene);
 
         primaryStage.show();
@@ -64,7 +65,7 @@ public class Project extends Application {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(0, 20, 0, 20));
-        //grid.setGridLinesVisible(true);
+        grid.setGridLinesVisible(true);
 
     }
 
@@ -74,48 +75,68 @@ public class Project extends Application {
         // ----------- ITEMS
         TextField inputItemA = new TextField();
         grid.add(inputItemA, 1, 4);
+        inputItemA.setMinWidth(200);
         inputItemA.setPrefWidth(200);
+        inputItemA.setMaxWidth(200);
       //  inputItemA.setOnKeyReleased(event -> itemA = inputItemA.getText());
 
         TextField inputItemB = new TextField();
         grid.add(inputItemB, 1, 5);
+        inputItemB.setMinWidth(200);
         inputItemB.setPrefWidth(200);
+        inputItemB.setMaxWidth(200);
       //  inputItemB.setOnKeyReleased(event -> itemB = inputItemB.getText());
 
         TextField inputItemC = new TextField();
         grid.add(inputItemC, 1, 6);
+        inputItemC.setMinWidth(200);
         inputItemC.setPrefWidth(200);
+        inputItemC.setMaxWidth(200);
         inputItemC.setOnKeyReleased(event -> StoreName(inputItemC.getText(), 2));
 
         // ---------- AMOUNT
         TextField inputAmountA = new TextField();
         grid.add(inputAmountA, 2, 4);
+        inputAmountA.setMinWidth(50);
         inputAmountA.setPrefWidth(50);
+        inputAmountA.setMaxWidth(50);
       //  inputAmountA.setOnKeyReleased(event -> amountA = Integer.parseInt(inputAmountA.getText()));
 
         TextField inputAmountB = new TextField();
         grid.add(inputAmountB, 2, 5);
+        inputAmountB.setMinWidth(50);
         inputAmountB.setPrefWidth(50);
+        inputAmountB.setMaxWidth(50);
+
         //inputAmountB.setOnKeyReleased(event -> amountB = Integer.parseInt(inputAmountB.getText()));
 
         TextField inputAmountC = new TextField();
         grid.add(inputAmountC, 2, 6);
+        inputAmountC.setMinWidth(50);
         inputAmountC.setPrefWidth(50);
+        inputAmountC.setMaxWidth(50);
+
         inputAmountC.setOnKeyReleased( event -> CheckTextBox(inputAmountC,2, false));
 
         // ---------- PRICE
         TextField inputPriceA = new TextField();
         grid.add(inputPriceA, 3, 4);
+        inputPriceA.setMinWidth(75);
         inputPriceA.setPrefWidth(75);
+        inputPriceA.setMaxWidth(75);
         //inputPriceA.setOnKeyReleased(event -> priceA = double.parseInt(priceA.getText()));
 
         TextField inputPriceB = new TextField();
         grid.add(inputPriceB, 3, 5);
+        inputPriceB.setMinWidth(75);
         inputPriceB.setPrefWidth(75);
+        inputPriceB.setMaxWidth(75);
 
         TextField inputPriceC = new TextField();
         grid.add(inputPriceC, 3, 6);
+        inputPriceC.setMinWidth(75);
         inputPriceC.setPrefWidth(75);
+        inputPriceC.setMaxWidth(75);
         inputPriceC.setOnKeyReleased(event -> CheckTextBox(inputPriceC, 2, true));
     }
 
@@ -206,16 +227,27 @@ public class Project extends Application {
     {
 
         //------------------ AMOUNT
-        Text itemAmountA = new Text(items[2].getAmount() + "x");
-        itemAmountA.setFont(Font.font("Arial", FontWeight.BLACK, 18));
-        grid.add(itemAmountA, 10, 6);
-        AmountText[2] = itemAmountA;
+        Text itemAmountC = new Text(items[2].getAmount() + "x");
+        itemAmountC.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
+        grid.add(itemAmountC, 10, 6);
+        AmountText[2] = itemAmountC;
 
         //------------------ NAME
-        Text itemA = new Text(items[2].getName());
-        itemA.setFont(Font.font("Arial", FontWeight.BLACK, 18));
-        grid.add(itemA, 12, 6);
-        ItemNameText[2] = itemA;
+        Text itemC = new Text(items[2].getName());
+        itemC.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
+
+        grid.add(itemC, 12, 6);
+        ItemNameText[2] = itemC;
+
+
+        //------------------- TOTAL
+        TextField ItemTotalTextC = new TextField();
+        ItemTotalTextC.setText("$"+items[2].getTotal());
+        ItemTotalTextC.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
+        grid.add(ItemTotalTextC, 25, 6);
+        ItemTotalTextC.setPrefWidth(100);
+        ItemTotalTextC.setDisable(true);
+        ItemTotalText[2] = ItemTotalTextC;
     }
 
     private static void updateThis(int index, String Type)
@@ -226,8 +258,7 @@ public class Project extends Application {
         }
         else if(Type == "Price")
         {
-            //Text x = AmountText[index];
-            //x.setText(items[index].getTotal());
+            ItemTotalText[index].setText("$"+items[index].getTotal());
         }
         else
         {
