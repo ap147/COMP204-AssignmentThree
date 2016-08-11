@@ -28,8 +28,8 @@ public class Project extends Application {
     private static GridPane grid = new GridPane();
 
     private static item[] items = new item[3];
-    private static Text[] AmountText = new Text[3];
-    private static Text[] ItemNameText = new Text[3];
+
+    private static TextField[] ItemNameAmouunt = new TextField[3];
     private static TextField[] ItemTotalText = new TextField[3];
 
     private static double Total;
@@ -65,7 +65,7 @@ public class Project extends Application {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(0, 20, 0, 20));
-        grid.setGridLinesVisible(true);
+        grid.setGridLinesVisible(false);
 
     }
 
@@ -227,42 +227,37 @@ public class Project extends Application {
     {
 
         //------------------ AMOUNT
-        Text itemAmountC = new Text(items[2].getAmount() + "x");
+        TextField itemAmountC = new TextField(items[2].getName()+"x"+items[2].getAmount());
         itemAmountC.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
+        itemAmountC.setMinWidth(275);
+        itemAmountC.setPrefWidth(275);
+        itemAmountC.setMaxWidth(275);
+        itemAmountC.setDisable(true);
+
         grid.add(itemAmountC, 10, 6);
-        AmountText[2] = itemAmountC;
-
-        //------------------ NAME
-        Text itemC = new Text(items[2].getName());
-        itemC.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
-
-        grid.add(itemC, 12, 6);
-        ItemNameText[2] = itemC;
+        ItemNameAmouunt[2] = itemAmountC;
 
 
         //------------------- TOTAL
         TextField ItemTotalTextC = new TextField();
         ItemTotalTextC.setText("$"+items[2].getTotal());
         ItemTotalTextC.setFont(Font.font("Arial", FontWeight.NORMAL, 18));
-        grid.add(ItemTotalTextC, 25, 6);
         ItemTotalTextC.setPrefWidth(100);
         ItemTotalTextC.setDisable(true);
+
+        grid.add(ItemTotalTextC, 11, 6);
         ItemTotalText[2] = ItemTotalTextC;
     }
 
     private static void updateThis(int index, String Type)
     {
-        if(Type == "Amount")
+        if(Type == "Amount" || Type =="Name")
         {
-            AmountText[index].setText(items[index].getAmount() + "x");
-        }
-        else if(Type == "Price")
-        {
-            ItemTotalText[index].setText("$"+items[index].getTotal());
+            ItemNameAmouunt[index].setText(items[index].getName() + " x" + items[index].getAmount());
         }
         else
         {
-            ItemNameText[index].setText(items[index].getName());
+            ItemTotalText[index].setText("$"+items[index].getTotal());
         }
 
     }
@@ -291,7 +286,7 @@ class item
     private double Total;
     public item()
     {
-        Amount = 0; Price = 0; Name = "John";
+        Amount = 0; Price = 0; Name = "";
     }
 
     public void setName(String _n)
