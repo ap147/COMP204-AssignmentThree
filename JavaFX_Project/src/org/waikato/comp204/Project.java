@@ -28,11 +28,11 @@ public class Project extends Application {
     private static GridPane grid = new GridPane();
 
     private static item[] items = new item[3];
-
+    //right hand side of the grid, includes non editable text fields which update when user updates info about any of item
     private static TextField[] ItemNameAmouunt = new TextField[3];
     private static TextField[] ItemTotal = new TextField[4];
-
-    private static double Total;
+    //holds the grand total of all items
+    private static double GrandTotal;
     public static void main(String[] args) {
         launch(args);
     }
@@ -40,9 +40,12 @@ public class Project extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("JavaFX Project");
+        //Adds Items To Items List
         setupItems();
         setupGrid();
+        //Creates Input Fields for User
         setupInputTextFields();
+        //Create Right hand side fields, non editable
         setupCalculationfields();
 
         Scene scene = new Scene(grid, 850, 225);
@@ -65,10 +68,11 @@ public class Project extends Application {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(0, 20, 0, 20));
+        //Used for texting, shows grid lines when true parameter is passed
         grid.setGridLinesVisible(false);
-
     }
 
+    //Calls other methods which create/set action events for text fields
     public static void setupInputTextFields() {
         setupInputItemNAMEFields();
         setupInputAMOUNTFields();
@@ -76,16 +80,17 @@ public class Project extends Application {
     }
 
 
-
+    //Creates TextBoxs for items names, positions them on grid, sets actionevents
     public static void setupInputItemNAMEFields()
     {
-        // ------------------    INPUT    ------------------
         // ----------- ITEMS
+        //Creating Textfield, adding to grid, setting size properties
         TextField inputItemA = new TextField();
         grid.add(inputItemA, 1, 4);
         inputItemA.setMinWidth(200);
         inputItemA.setPrefWidth(200);
         inputItemA.setMaxWidth(200);
+        //calls a method to store items name in array, passing in where item is located in array
         inputItemA.setOnKeyReleased(event -> StoreName(inputItemA.getText(), 0));
 
         TextField inputItemB = new TextField();
@@ -209,7 +214,7 @@ public class Project extends Application {
         //------------------- TOTAL TOTAL
 
         TextField TotalToal = new TextField();
-        TotalToal.setText("Total : $ "+items[0].getTotal());
+        TotalToal.setText("Total : $ "+ GrandTotal);//items[0].getTotal());
 
         TotalToal.setPrefWidth(150);
         TotalToal.setDisable(true);
@@ -292,41 +297,46 @@ public class Project extends Application {
         }
         return false;
     }
+    //Gets called everytime an update has been made in Items Name TextFields (setupInputItemNAMEFields())
     private static void StoreName(String _itemName, int index)
     {
         items[index].setName(_itemName);
+        //Updates the right non editable side
         updateThis(index);
     }
 
 
-
-
-
+    //Updates right hand side of program by given parameter, it indexes in array using that
     private static void updateThis(int index)
     {
+        //Setting Item Name & Amount
         ItemNameAmouunt[index].setText(items[index].getName() + " x" + items[index].getAmount());
-
+        //Setting Items Total
         ItemTotal[index].setText("$"+items[index].getTotal());
-        ItemTotal[3].setText("Total : $" + Total);
+        //Setting GrandTotal of all items
+        ItemTotal[3].setText("Total : $" + GrandTotal);
 
     }
+    //goes through the array, asking every item for there total and adds it to grandtotal
     private static void CalculateGrandTotal()
     {
-        Total = 0;
+        GrandTotal = 0;
         System.out.println();
         System.out.println("Calculating..");
 
         for(int x = 0; x < items.length; x++)
         {
-            Total = Total + (items[x].getPrice() * items[x].getAmount());
+
+            GrandTotal = GrandTotal + (items[x].getTotal());
         }
-        System.out.println("Total :" + Total );
+        System.out.println("Total :" + GrandTotal );
     }
 
 
 
 }
 
+//Used to store item name,amount & price
 class item
 {
     private String Name;
