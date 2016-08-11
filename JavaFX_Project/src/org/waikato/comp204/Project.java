@@ -28,9 +28,8 @@ public class Project extends Application {
     private static GridPane grid = new GridPane();
 
     private static item[] items = new item[3];
-    private static item itemA;
-    private static item itemB;
-    private static item itemC;
+    private static Text[] AmountText = new Text[3];
+    private static Text[] ItemNameText = new Text[3];
 
     private static double Total;
     public static void main(String[] args) {
@@ -43,21 +42,19 @@ public class Project extends Application {
         setupItems();
         setupGrid();
         setupInputTextFields();
-        setupCalculationields();
+        setupCalculationfields();
 
         Scene scene = new Scene(grid, 700, 250);
         primaryStage.setScene(scene);
 
-
         primaryStage.show();
-
     }
 
     private static void setupItems()
     {
-        itemA = new item();
-        itemB = new item();
-        itemC = new item();
+        item itemA = new item();
+        item itemB = new item();
+        item itemC = new item();
 
         items[0] = itemA;
         items[1] = itemB;
@@ -147,6 +144,7 @@ public class Project extends Application {
 
             }
            System.out.println(items[index].getPrice());
+            updateThis(index,"Price");
         }
         else
         {
@@ -169,7 +167,9 @@ public class Project extends Application {
                 }
             }
             System.out.println(items[index].getAmount());
+            updateThis(index,"Amount");
         }
+
         Calculate();
     }
     private static boolean CheckIfNum(String num, boolean isitPrice)
@@ -194,6 +194,7 @@ public class Project extends Application {
     private static void StoreName(String _itemName, int index)
     {
         items[index].setName(_itemName);
+        updateThis(index,"Name");
     }
 
 
@@ -201,16 +202,38 @@ public class Project extends Application {
 
 
 
-    private static void setupCalculationields()
+    private static void setupCalculationfields()
     {
+
         //------------------ AMOUNT
-        Text itemAmountA = new Text(items[0].getAmount()+"x");
+        Text itemAmountA = new Text(items[2].getAmount() + "x");
         itemAmountA.setFont(Font.font("Arial", FontWeight.BLACK, 18));
-        grid.add(itemAmountA,10,6);
+        grid.add(itemAmountA, 10, 6);
+        AmountText[2] = itemAmountA;
+
         //------------------ NAME
-        Text itemA = new Text(items[0].getName());
+        Text itemA = new Text(items[2].getName());
         itemA.setFont(Font.font("Arial", FontWeight.BLACK, 18));
-        grid.add(itemA,12,6);
+        grid.add(itemA, 12, 6);
+        ItemNameText[2] = itemA;
+    }
+
+    private static void updateThis(int index, String Type)
+    {
+        if(Type == "Amount")
+        {
+            AmountText[index].setText(items[index].getAmount() + "x");
+        }
+        else if(Type == "Price")
+        {
+            //Text x = AmountText[index];
+            //x.setText(items[index].getTotal());
+        }
+        else
+        {
+            ItemNameText[index].setText(items[index].getName());
+        }
+
     }
     private static void Calculate()
     {
@@ -226,6 +249,7 @@ public class Project extends Application {
     }
 
 
+
 }
 
 class item
@@ -233,7 +257,7 @@ class item
     private String Name;
     private int Amount;
     private double Price;
-
+    private double Total;
     public item()
     {
         Amount = 0; Price = 0; Name = "John";
@@ -264,6 +288,7 @@ class item
     {
         return Price;
     }
+    public Double getTotal(){Total = Price * Amount; return Total;}
 }
 
 
