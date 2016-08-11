@@ -45,7 +45,7 @@ public class Project extends Application {
         setupInputTextFields();
         setupCalculationfields();
 
-        Scene scene = new Scene(grid, 850, 250);
+        Scene scene = new Scene(grid, 850, 225);
         primaryStage.setScene(scene);
 
         primaryStage.show();
@@ -245,7 +245,7 @@ public class Project extends Application {
             }
            System.out.println(items[index].getPrice());
             CalculateGrandTotal();
-            updateThis(index,"Price");
+            updateThis(index);
         }
         else
         {
@@ -269,7 +269,7 @@ public class Project extends Application {
             }
             System.out.println(items[index].getAmount());
             CalculateGrandTotal();
-            updateThis(index,"Amount");
+            updateThis(index);
         }
 
     }
@@ -295,24 +295,19 @@ public class Project extends Application {
     private static void StoreName(String _itemName, int index)
     {
         items[index].setName(_itemName);
-        updateThis(index,"Name");
+        updateThis(index);
     }
 
 
 
 
 
-    private static void updateThis(int index, String Type)
+    private static void updateThis(int index)
     {
-        if(Type == "Amount" || Type =="Name")
-        {
-            ItemNameAmouunt[index].setText(items[index].getName() + " x" + items[index].getAmount());
-        }
-        else
-        {
-            ItemTotal[index].setText("$"+items[index].getTotal());
-            ItemTotal[3].setText("Total : $" + Total);
-        }
+        ItemNameAmouunt[index].setText(items[index].getName() + " x" + items[index].getAmount());
+
+        ItemTotal[index].setText("$"+items[index].getTotal());
+        ItemTotal[3].setText("Total : $" + Total);
 
     }
     private static void CalculateGrandTotal()
