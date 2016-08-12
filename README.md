@@ -43,7 +43,32 @@ Task 1 Questions
 ----------------
 
 ```
------------ Need to Come Back to this. ----------
+You are using a new GUI library that you have never used before, surely you are curious as to
+what you could make it do.We want you to think about things you could do with it, 
+phrase those as questions and attempt to make your solution do that thing.
+
+You don't need to get into too much detail, just bullet-points highlighting the major points would be fine.
+What we are looking for is evidence that you thought about the question & 
+solution and learned something about it in the process. If we see points suggesting that you 
+found a solution and identified possible sticking points we will be happy.
+
+I come from using Visual Stuido in which we basically dragged and droped UI items (buttons, textfields)
+so it was very strange not seeing anything that was drag and drop, my first impression was, 
+maybe you cant do it (stupied thought I know) 
+
+When working with this task, there seemed to be alot of code for such a simple task and was quite 
+over whelming.To think I would have to write that much code just to add a button on a window, 
+but as working through the code it kind of made some sense. 
+
+These are the few questions that were raised in my head while working through.
+
+1)When setting an action event for the button, does it have to take so much space ?
+  Because if I have multiple buttons with there own actionevents in one method it could look very cluttuered.
+  
+2)What are the capabilities of this new GUI library, can it even do much for develpers since I personally felt the drag and drop on visual studio was alot easier, quicker (probably because I am very new/ unfamilier)
+
+
+
 ```
 
 Task 2

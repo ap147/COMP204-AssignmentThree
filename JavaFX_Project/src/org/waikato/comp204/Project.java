@@ -1,16 +1,15 @@
 package org.waikato.comp204;
 //https://www.youtube.com/watch?v=QGGE0WsUslc
 //http://stackoverflow.com/questions/32866937/how-to-check-if-textfield-is-empty
-//http://docs.oracle.com/javafx/2/layout/builtin_layouts.htm
+//http://docs.oracle.com/javafx/2/layout/builtin_layouts.html
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -20,7 +19,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 
@@ -377,7 +375,10 @@ class item
     {
         return Price;
     }
-    public Double getTotal(){Total = Price * Amount; return Total;}
+    public Double getTotal(){
+        Total = Price * Amount;
+        return  Total;
+    }
 }
 
 
