@@ -62,12 +62,25 @@ but as working through the code it kind of made some sense.
 
 These are the few questions that were raised in my head while working through.
 
-1)When setting an action event for the button, does it have to take so much space ?
-  Because if I have multiple buttons with there own actionevents in one method it could look very cluttuered.
+1)
+When setting an action event for the button, does it have to take so much space ?
+Because if I have multiple buttons with there own actionevents in one method it could look very cluttuered.
   
-2)What are the capabilities of this new GUI library, can it even do much for develpers since I personally felt the drag and drop on visual studio was alot easier, quicker (probably because I am very new/ unfamilier)
-
-
+2)
+What are the capabilities of this new GUI library, can it even do much for develpers ?
+ Since I personally felt the drag and drop on visual studio was alot easier, quicker (probably because I am very new/ unfamilier)
+    
+3)
+Is there somthing like MessageBox from visual studio in this new GUI ? 
+For example when I have google calender open on chrome and I have got a class soon it will alerts me by having a mini message box.
+  
+  After some research it turns out you can do this, by simply having another class which creates another window that you can display your message or even make it so that user cant acces other window until they close the message box.
+   * Create a class (B), Make a window and add a button in that window.
+   * This setp is to make it so user cant acceess other window until they close message box. Use "STAGENAME.initModality(Modality.APPLICATION_MODAL);" STAGENAME is whatever the stage name is in this class. 
+   * Create a window just like we did with HelloWorld.
+   * Create a class (A), Make a window and add a button which will have a action event that will cause class(B) to excute. 
+   
+   Source : https://www.youtube.com/watch?v=SpL3EToqaXA 
 
 ```
 
