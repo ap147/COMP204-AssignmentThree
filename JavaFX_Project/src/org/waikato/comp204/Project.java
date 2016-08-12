@@ -30,6 +30,7 @@ public class Project extends Application {
     private static item[] items = new item[3];
     //right hand side of the grid, includes non editable text fields which update when user updates info about any of item
     private static TextField[] ItemNameAmouunt = new TextField[3];
+    //The forth textfield belongs to the grand total textfield
     private static TextField[] ItemTotal = new TextField[4];
     //holds the grand total of all items
     private static double GrandTotal;
@@ -157,26 +158,26 @@ public class Project extends Application {
         inputPriceC.setOnKeyReleased(event -> CheckTextBox(inputPriceC, 2, true));
     }
 
-
+    //Creates Right hand side text fields, makes them noneditable, positions them
     private static void setupCalculationfields()
     {
         //------------------ AMOUNT
-
-        TextField itemAmountA = new TextField(items[0].getName()+"x"+items[0].getAmount());
+        //Creating TextField, setting its size
+        TextField itemAmountA = new TextField();
         itemAmountA.setPrefWidth(275);
         itemAmountA.setDisable(true);
-
+        //Positioning it on grid, adding it to array
         grid.add(itemAmountA, 10, 4);
         ItemNameAmouunt[0] = itemAmountA;
 
-        TextField itemAmountB = new TextField(items[1].getName()+"x"+items[1].getAmount());
+        TextField itemAmountB = new TextField();
         itemAmountB.setPrefWidth(275);
         itemAmountB.setDisable(true);
 
         grid.add(itemAmountB, 10, 5);
         ItemNameAmouunt[1] = itemAmountB;
 
-        TextField itemAmountC = new TextField(items[2].getName()+"x"+items[2].getAmount());
+        TextField itemAmountC = new TextField();
         itemAmountC.setMinWidth(275);
         itemAmountC.setPrefWidth(275);
         itemAmountC.setMaxWidth(275);
@@ -188,7 +189,6 @@ public class Project extends Application {
 
         //------------------- TOTAL
         TextField ItemTotalTextA = new TextField();
-        ItemTotalTextA.setText("$"+items[0].getTotal());
         ItemTotalTextA.setPrefWidth(100);
         ItemTotalTextA.setDisable(true);
 
@@ -196,7 +196,6 @@ public class Project extends Application {
         ItemTotal[0] = ItemTotalTextA;
 
         TextField ItemTotalTextB = new TextField();
-        ItemTotalTextB.setText("$"+items[1].getTotal());
         ItemTotalTextB.setPrefWidth(100);
         ItemTotalTextB.setDisable(true);
 
@@ -204,39 +203,43 @@ public class Project extends Application {
         ItemTotal[1] = ItemTotalTextB;
 
         TextField ItemTotalTextC = new TextField();
-        ItemTotalTextC.setText("$"+items[2].getTotal());
         ItemTotalTextC.setPrefWidth(100);
         ItemTotalTextC.setDisable(true);
 
         grid.add(ItemTotalTextC, 11, 6);
         ItemTotal[2] = ItemTotalTextC;
 
-        //------------------- TOTAL TOTAL
+        //------------------- GRAND TOTAL
 
         TextField TotalToal = new TextField();
-        TotalToal.setText("Total : $ "+ GrandTotal);//items[0].getTotal());
-
+        TotalToal.setText("Total : $ "+ GrandTotal);
+        //Setting size & nonedittable
         TotalToal.setPrefWidth(150);
         TotalToal.setDisable(true);
 
         grid.add(TotalToal, 10, 7);
+        //Storing GRAND total TextField
         ItemTotal[3] = TotalToal;
     }
 
-
+    //Checkes if the input is an int or a double, if its not then it sets it to the privious value
     private static void CheckTextBox(TextField x, int index, boolean isitPrice)
     {
         System.out.println("Input Detected");
+        //If a double is expected
         if(isitPrice)
         {
             System.out.println("PRICE Input");
+            //And its a double
             if (CheckIfNum(x.getText(),true))
             {
+                //Then Update value
                 System.out.println("Correct input");
                 items[index].setPrice(Double.parseDouble(x.getText()));
             }
             else
             {
+                //Change textbox value to privous value before invalid output was made
                 System.out.println("Invalid input");
                 if (!x.getText().trim().isEmpty())
                 {
@@ -249,6 +252,7 @@ public class Project extends Application {
 
             }
            System.out.println(items[index].getPrice());
+            //updateing noneditable text fields & recalculating GrandTotal
             CalculateGrandTotal();
             updateThis(index);
         }
@@ -278,11 +282,14 @@ public class Project extends Application {
         }
 
     }
+    //retusn true if passed in value is an number, where being double or int
     private static boolean CheckIfNum(String num, boolean isitPrice)
     {
         try{
+            //if its a double
             if(isitPrice)
             {
+                //try turning it to a double
                 double x = Double.parseDouble(num);
                 return true;
             }
@@ -323,17 +330,14 @@ public class Project extends Application {
         GrandTotal = 0;
         System.out.println();
         System.out.println("Calculating..");
-
+        //loop thoguh the array
         for(int x = 0; x < items.length; x++)
         {
-
+            //Grandtotal plus current items total
             GrandTotal = GrandTotal + (items[x].getTotal());
         }
         System.out.println("Total :" + GrandTotal );
     }
-
-
-
 }
 
 //Used to store item name,amount & price
