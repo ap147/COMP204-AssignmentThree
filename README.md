@@ -61,14 +61,11 @@ After some googleing there are few of the features that stood out to me.
     * JavaFX Scene Builder provided by Orcale which makes it alot easier to move around buttons, etc ( I just learnt this, and all this time I thought there was no way moving the buttons except using code)
     * You can apply CSS on components(Buttons,etc). 
     * You can easily add sound, images & sound in javafx. 
-    * It has high performance media engine which supports the playback of web multimedia conent.
-    
+    * It has high performance media engine which supports the playback of web multimedia conent.  
     
     Source : http://docs.oracle.com/javafx/2/overview/jfxpub-overview.htm
     Source : https://www.youtube.com/watch?v=9YrmON6nlEw&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq
-    
-    
-    
+        
 2) 
 From looking around what are the capabilities of JavaFX I came across a page which had the best practices for JavaFx, one of them being "Use a Custome Preloader"
 So my question is What is a Preloader ? 
@@ -78,12 +75,13 @@ To me that sounds like somthing that happens before your program is loaded and p
     * Thats a preloader, your bike is working like a progress bar for how much of your application is loaded. 
     * Preloaders are not used for applications that load quickly.
     * They are mainly useed when the program is going to wait sometime waiting for the program. 
-Source : http://docs.oracle.com/javafx/2/best_practices/jfxpub-best_practices.htm 
+    
+    Source : http://docs.oracle.com/javafx/2/best_practices/jfxpub-best_practices.htm 
+
 3)
 Is there somthing like MessageBox from visual studio in this new GUI ? 
 For example when I have google calender open on chrome and I have got a class soon it will alerts me by having a mini message box.
-  
-  After some research it turns out you can do this, by simply having another class which creates another window that you can display your message or even make it so that user cant acces other window until they close the message box.
+After some research it turns out you can do this, by simply having another class which creates another window that you can display your message or even make it so that user cant acces other window until they close the message box.
   
    * Create a class (B), Make a window and add a label in that window.
    * To make it so user cant acceess other window until they close message box. Use "Box.initModality(Modality.APPLICATION_MODAL);" "Box" being the stage name. 
@@ -143,11 +141,8 @@ Task 2 Questions
    
    From this you can really be creative with your program, make it more apealing, easier to detect important parts. Get the user to look where you want them to look first. 
    
-   
    Source : http://docs.oracle.com/javafx/2/best_practices/jfxpub-best_practices.htm 
    Source : https://www.youtube.com/watch?v=MAiKpkQqb6Q 
-   
-   
 ```
 
 Task 3
