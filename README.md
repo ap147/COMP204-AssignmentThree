@@ -43,15 +43,6 @@ Task 1 Questions
 ----------------
 
 ```
-You are using a new GUI library that you have never used before, surely you are curious as to
-what you could make it do.We want you to think about things you could do with it, 
-phrase those as questions and attempt to make your solution do that thing.
-
-You don't need to get into too much detail, just bullet-points highlighting the major points would be fine.
-What we are looking for is evidence that you thought about the question & 
-solution and learned something about it in the process. If we see points suggesting that you 
-found a solution and identified possible sticking points we will be happy.
-
 I come from using Visual Stuido in which we basically dragged and droped UI items (buttons, textfields)
 so it was very strange not seeing anything that was drag and drop, my first impression was, 
 maybe you cant do it (stupied thought I know) 
@@ -63,13 +54,31 @@ but as working through the code it kind of made some sense.
 These are the few questions that were raised in my head while working through.
 
 1)
-Could I add a feature in which instead of left-clicking, I right-clicked for more options ?  
-For example when you right click on desktop. 
-  
-2)
 What are the capabilities of this new GUI library, can it even do much for develpers, what are the possibilites ?
 Since I personally felt the drag and drop on visual studio was alot easier, quicker (probably because I am very new/ unfamilier)
+After some googleing there are few of the features that stood out to me. 
+    * JavaFX is more powerful/faster then Swing, it can be used for desktop and web applications.
+    * JavaFX Scene Builder provided by Orcale which makes it alot easier to move around buttons, etc ( I just learnt this, and all this time I thought there was no way moving the buttons except using code)
+    * You can apply CSS on components(Buttons,etc). 
+    * You can easily add sound, images & sound in javafx. 
+    * It has high performance media engine which supports the playback of web multimedia conent.
     
+    
+    Source : http://docs.oracle.com/javafx/2/overview/jfxpub-overview.htm
+    Source : https://www.youtube.com/watch?v=9YrmON6nlEw&list=PLS1QulWo1RIaUGP446_pWLgTZPiFizEMq
+    
+    
+    
+2) 
+From looking around what are the capabilities of JavaFX I came across a page which had the best practices for JavaFx, one of them being "Use a Custome Preloader"
+So my question is What is a Preloader ? 
+To me that sounds like somthing that happens before your program is loaded and presented to you. 
+    * A Preloader is a program which is seprate from your main proagram that runs while you main program is starting up.
+    * So if you imagine a bike on a racetrack, and its going from its start to finish. 
+    * Thats a preloader, your bike is working like a progress bar for how much of your application is loaded. 
+    * Preloaders are not used for applications that load quickly.
+    * They are mainly useed when the program is going to wait sometime waiting for the program. 
+Source : http://docs.oracle.com/javafx/2/best_practices/jfxpub-best_practices.htm 
 3)
 Is there somthing like MessageBox from visual studio in this new GUI ? 
 For example when I have google calender open on chrome and I have got a class soon it will alerts me by having a mini message box.
@@ -114,10 +123,11 @@ Task 2 Questions
    
    Source:https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html
    
-2) Could I save users inputs in these fields so they dont have to type them up everytime they open this program ?
-   * My first thought was this is a stupied question, because you would simply save it in a list or array, then I realized my arrays will get reset when program is closed.
-   * I found out that when user closes program I can call a method before it closes and my base assumption is I would have to write to a text document which I can open later to retrive information.
-   * 
+2) Could I do somthing before the user closes my program ?
+   * My first thought was this is a stupied question, because why would you need to do anything since the user is closing program ?
+   * But then I realized that some programs might need to save the users data from the textfields.
+   * I found out that when user closes program I can call a method before it closes.
+   * So I can get all the information out of the textboxes and write them to a text document before exiting or even warn the user if they are sure they want to exit.
    
   Source : https://www.youtube.com/watch?v=ZuHcl5MmRck
 
