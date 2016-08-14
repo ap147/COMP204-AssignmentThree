@@ -63,7 +63,8 @@ but as working through the code it kind of made some sense.
 These are the few questions that were raised in my head while working through.
 
 1)
-
+Could I add a feature in which instead of left-clicking, I right-clicked for more options ?  
+For example when you right click on desktop. 
   
 2)
 What are the capabilities of this new GUI library, can it even do much for develpers, what are the possibilites ?
@@ -124,10 +125,17 @@ Task 2 Questions
    So far doing programs in Vistual Studio they were pretty plane, with occasional plain color. I wonder If in javafx you could make a program look nicer/ professional. 
    
    * Turns out you can use Cascading Style Sheets (.css) to custimize your programs, I personally thought css was only used with html so this is a bit of suprise for me. 
+   * It is basically just implemented like you implement css in html.
+   * You create a new file with .css extention (in src folder where you code is). 
+   * if I want to target all the labels in my program/class, I use .label in my css to target them and from then on I can set all of there properties. (background colors, background radius, etc)
+   * Also this implies with buttons, using the same method we just did for our label. 
+   * Now obviously we can also target buttons, labels individually using button.getStyleClass().add("you unqie name from css");
    
+   From this you can really be creative with your program, make it more apealing, easier to detect important parts. Get the user to look where you want them to look first. 
    
    
    Source : http://docs.oracle.com/javafx/2/best_practices/jfxpub-best_practices.htm 
+   Source : https://www.youtube.com/watch?v=MAiKpkQqb6Q 
    
    
 ```
