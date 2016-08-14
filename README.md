@@ -66,8 +66,8 @@ These are the few questions that were raised in my head while working through.
 
   
 2)
-What are the capabilities of this new GUI library, can it even do much for develpers ?
- Since I personally felt the drag and drop on visual studio was alot easier, quicker (probably because I am very new/ unfamilier)
+What are the capabilities of this new GUI library, can it even do much for develpers, what are the possibilites ?
+Since I personally felt the drag and drop on visual studio was alot easier, quicker (probably because I am very new/ unfamilier)
     
 3)
 Is there somthing like MessageBox from visual studio in this new GUI ? 
@@ -105,10 +105,29 @@ Task 2 Questions
 1) Could I generate textboxes with a loop and have them stored in a array at the same time ?
    Doing project (Task3) I created every indiviual TextBox by hand, now thinking about it, if I had could use a loop it would've saved clutterness and time.
    
-   * Just realized that password text box is type "PasswordField" where username is a "TextBoxField". First thought was an TextField array probably wont accept a PasswordField type. But I experimented with it anyways and it seemed to just work fine.
+   * Just realized that password text box is type "PasswordField" where username is a "TextBoxField". First thought was an TextField array probably wont accept a PasswordField type. But I experimented with it anyways and it seemed to just work fine. 
+   * TextField & PasswordField must be linked in some way. After some research it turns out PasswordField is one of the direct known subclasses of TextField.
    * This would work alot better If all fields were textfields like in project but offsetting might not work as well, since you got to think what will happen in a loop in complex situations. 
    * Implementing this feature in here did not make that much of a diffrence but if I implement this into my project, it would save alot of space espcially since we didnt have to size textfields.
    * From this I presume this could be also done with labels, you could create alot of them and then custimize them to your needs when you needed to use them. It would save all the initilzing everytime you used it. 
+   
+   Source:https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextField.html
+   
+2) Could I save users inputs in these fields so they dont have to type them up everytime they open this program ?
+   * My first thought was this is a stupied question, because you would simply save it in a list or array, then I realized my arrays will get reset when program is closed.
+   * I found out that when user closes program I can call a method before it closes and my base assumption is I would have to write to a text document which I can open later to retrive information.
+   * 
+   
+  Source : https://www.youtube.com/watch?v=ZuHcl5MmRck
+
+3) Could I Make programs, forms/ programs that look nice and not simply grey and black ? 
+   So far doing programs in Vistual Studio they were pretty plane, with occasional plain color. I wonder If in javafx you could make a program look nicer/ professional. 
+   
+   * Turns out you can use Cascading Style Sheets (.css) to custimize your programs, I personally thought css was only used with html so this is a bit of suprise for me. 
+   
+   
+   
+   Source : http://docs.oracle.com/javafx/2/best_practices/jfxpub-best_practices.htm 
    
    
 ```
