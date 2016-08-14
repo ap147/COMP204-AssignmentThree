@@ -102,8 +102,13 @@ Task 2 Questions
 
 ```
 
-1) Could I generate textboxes with a loop and have them stored in a list at the same time ?
+1) Could I generate textboxes with a loop and have them stored in a array at the same time ?
    Doing project (Task3) I created every indiviual TextBox by hand, now thinking about it, if I had could use a loop it would've saved clutterness and time.
+   
+   * Just realized that password text box is type "PasswordField" where username is a "TextBoxField". First thought was an TextField array probably wont accept a PasswordField type. But I experimented with it anyways and it seemed to just work fine.
+   * This would work alot better If all fields were textfields like in project but offsetting might not work as well, since you got to think what will happen in a loop in complex situations. 
+   * Implementing this feature in here did not make that much of a diffrence but if I implement this into my project, it would save alot of space espcially since we didnt have to size textfields.
+   * From this I presume this could be also done with labels, you could create alot of them and then custimize them to your needs when you needed to use them. It would save all the initilzing everytime you used it. 
    
    
 ```
