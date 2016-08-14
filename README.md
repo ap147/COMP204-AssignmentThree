@@ -63,8 +63,7 @@ but as working through the code it kind of made some sense.
 These are the few questions that were raised in my head while working through.
 
 1)
-When setting an action event for the button, does it have to take so much space ?
-Because if I have multiple buttons with there own actionevents in one method it could look very cluttuered.
+
   
 2)
 What are the capabilities of this new GUI library, can it even do much for develpers ?
@@ -75,11 +74,15 @@ Is there somthing like MessageBox from visual studio in this new GUI ?
 For example when I have google calender open on chrome and I have got a class soon it will alerts me by having a mini message box.
   
   After some research it turns out you can do this, by simply having another class which creates another window that you can display your message or even make it so that user cant acces other window until they close the message box.
+  
    * Create a class (B), Make a window and add a label in that window.
    * To make it so user cant acceess other window until they close message box. Use "Box.initModality(Modality.APPLICATION_MODAL);" "Box" being the stage name. 
    * Also use "window.showAndWait() instead of window.show()" which waits for message window to close before continueing on with code.
    * Create a window just like we did with HelloWorld.
    * Create a class (A), Make a window and add a button which will have a action event that will cause class(B) to excute. 
+  
+  The solution being this simple kind of makes me feel stupied since it didnt even pop into my head but learning how you can restrict the access to user to main window while message box is up was quite intresting. I can think of many uses for this, 
+  such as if my program need time to load somthing I could set a timer on a message box which displays "Please Wait" and restrict acces to main window until my program is finished.  
    
    Source : https://www.youtube.com/watch?v=SpL3EToqaXA 
 
@@ -98,7 +101,11 @@ Task 2 Questions
 ----------------
 
 ```
------------ Need to Come Back to this. ----------
+
+1) Could I generate textboxes with a loop and have them stored in a list at the same time ?
+   Doing project (Task3) I created every indiviual TextBox by hand, now thinking about it, if I had could use a loop it would've saved clutterness and time.
+   
+   
 ```
 
 Task 3
